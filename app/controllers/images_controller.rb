@@ -32,14 +32,6 @@ class ImagesController < ApplicationController
     end
   end
 
-  def duplicate?(url)
-    @images = Image.all
-    @images.each do |image|
-      return true if image.url == url
-    end
-    false
-  end
-
   # PATCH/PUT /images/1
   def update
     if @image.update(image_params)
@@ -65,5 +57,15 @@ class ImagesController < ApplicationController
   # Only allow a trusted parameter "white list" through.
   def image_params
     params.require(:image).permit(:index, :url)
+  end
+
+  private
+
+  def duplicate?(url)
+    @images = Image.all
+    @images.each do |image|
+      return true if image.url == url
+    end
+    false
   end
 end
