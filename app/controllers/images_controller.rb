@@ -19,6 +19,7 @@ class ImagesController < ApplicationController
 
   # POST /images
   def create
+    image_params['url'] = image_params['url'].strip
     @image = Image.new(image_params)
     if duplicate?(image_params[:url])
       redirect_to images_url, notice: 'Duplicate image url.'

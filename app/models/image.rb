@@ -7,7 +7,7 @@ class Image < ApplicationRecord
   require 'uri'
 
   def valid_url
-    uri = URI.parse(url)
+    uri = URI.parse(url.strip)
     if !uri&.host.nil?
       true
     else
