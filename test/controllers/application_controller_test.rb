@@ -6,9 +6,4 @@ class ApplicationControllerTest < ActionDispatch::IntegrationTest
     assert_select 'h1', 'Hello everyone!'
   end
 
-  def test_new_form
-    get new_image_url
-    assert_select 'input.js-url-field', 1
-    # assert_select 'button', 1
-  end
 end
