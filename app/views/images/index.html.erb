@@ -11,9 +11,9 @@
   </thead>
 
   <tbody>
-    <% @images.each_with_index do |image, index| %>
+    <% @images.each do |image| %>
       <tr>
-        <td><div><%= image_tag(image.url, size: 400)%></div><%= content_tag(:div, image.url, id: index.to_s) %></td>
+        <td><div><%= image_tag(image.url, size: 400) %></div></td>
         <td><%= link_to 'Show', image %></td>
         <td><%= link_to 'Edit', edit_image_path(image) %></td>
         <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>

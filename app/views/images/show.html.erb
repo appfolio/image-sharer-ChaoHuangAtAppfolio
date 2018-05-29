@@ -1,11 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Url:</strong>
-  <div class="url"><%= @image.url %></div>
-
-</p>
-
 <%= image_tag(@image.url) %>
 
 <%= link_to 'Edit', edit_image_path(@image) %> |
