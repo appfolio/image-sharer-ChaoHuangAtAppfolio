@@ -79,4 +79,17 @@ class ImageControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'Image was successfully destroyed.', flash[:notice]
   end
 
+  def test_create_newest_shows_first
+    assert_difference('Image.count', 1) do
+      image_params = {:url => 'https://myfirstshiba.com/wp-content/uploads/2017/04/AdobeStock_128841363_reduced.jpg'}
+      post images_path, params: {image: image_params}
+    end
+
+    assert_redirected_to image_path(Image.last)
+    get images_path
+
+    assert_response :ok
+    assert_select '#0', 'https://myfirstshiba.com/wp-content/uploads/2017/04/AdobeStock_128841363_reduced.jpg'
+  end
+
 end
