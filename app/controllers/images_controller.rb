@@ -3,7 +3,7 @@ class ImagesController < ApplicationController
 
   # GET /images
   def index
-    @images = Image.all
+    @images = Image.order(created_at: :desc)
   end
 
   # GET /images/1
@@ -57,10 +57,8 @@ class ImagesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def image_params
-    params.require(:image).permit(:index, :url)
+    params.require(:image).permit(:url)
   end
-
-  private
 
   def duplicate?(url)
     @images = Image.all
