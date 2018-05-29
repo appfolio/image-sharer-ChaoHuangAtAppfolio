@@ -2,8 +2,11 @@
 
 <p>
   <strong>Url:</strong>
-  <%= @image.url %>
+  <div class="url"><%= @image.url %></div>
+
 </p>
+
+<%= image_tag(@image.url) %>
 
 <%= link_to 'Edit', edit_image_path(@image) %> |
 <%= link_to 'Back', images_path %>

@@ -4,6 +4,7 @@ class ImagesController < ApplicationController
   # GET /images
   def index
     @images = Image.all
+    @images.reverse_order!
   end
 
   # GET /images/1
@@ -59,8 +60,6 @@ class ImagesController < ApplicationController
   def image_params
     params.require(:image).permit(:url)
   end
-
-  private
 
   def duplicate?(url)
     @images = Image.all
